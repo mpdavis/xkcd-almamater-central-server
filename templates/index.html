@@ -1,21 +1,24 @@
 <html>
     <body>
-        <table>
-            <thead>
-                <th>Hash</th>
-                <th>Original</th>
+        <div>
+
+            <table border="1">
+                <thead>
+                <th style="width:600px;">Original</th>
                 <th>Diff Bits</th>
-            </thead>
-            <tbody>
-            {% for submission in submissions %}
+                </thead>
+                <tbody>
+                {% for submission in submissions %}
                 <tr>
-                    <td>{{ submission.hash }}</td>
                     <td>{{ submission.original }}</td>
                     <td>{{ submission.diff_bits }}</td>
                 </tr>
+                {% endfor %}
+                </tbody>
+            </table>
 
-            {% endfor %}
-            </tbody>
-        </table>
+
+        </div>
+
     </body>
 </html>
