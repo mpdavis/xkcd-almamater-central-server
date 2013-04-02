@@ -10,7 +10,7 @@ from flask_mongoengine import Document
 
 from mongoengine.fields import StringField, IntField
 
-chars = string.printable
+chars = string.ascii_letters
 iter_thing = itertools.combinations_with_replacement(chars, r=32)
 
 # Determining the project root.
@@ -30,7 +30,6 @@ def jump_to_next_block():
 
 class Submission(Document):
     original = StringField(max_length=1024, required=True)
-    hash = StringField(max_length=1024, required=True)
     diff_bits = IntField(required=True)
 
 
@@ -43,10 +42,10 @@ def index():
 
 @app.route('/submit/')
 def get_hash():
-    hash = request.args.get('hash', None)
     original = request.args.get('original', None)
-    if hash and original:
-        submission = Submission(original=original, hash=hash, diff_bits=calculate_diff(original, hash))
+    diff_bits = request.args.get('diff', None)
+    if original and diff_bits:
+        submission = Submission(original=original, diff_bits=diff_bits)
         submission.save()
         return "Submission saved successfully"
     return "Missing parameter"
