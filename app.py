@@ -17,7 +17,7 @@ iter_thing = itertools.combinations_with_replacement(chars, r=32)
 PROJECT_ROOT = os.path.dirname(os.path.realpath(__file__))
 
 # Creating the Flask app object
-app = Flask(__name__, static_folder=os.path.join(PROJECT_ROOT, 'static'), static_url_path='/static')
+app = Flask(__name__, static_folder=os.path.join(PROJECT_ROOT, 'static'), static_url_path='/max_sucks')
 app.config['DEBUG'] = True
 app.config['MONGODB_DB'] = 'hashes'
 
