@@ -1,24 +1,32 @@
 <html>
-    <body>
-        <div>
 
-            <table border="1">
-                <thead>
-                <th style="width:600px;">Original</th>
-                <th>Diff Bits</th>
-                </thead>
-                <tbody>
-                {% for submission in submissions %}
-                <tr>
-                    <td>{{ submission.original }}</td>
-                    <td>{{ submission.diff_bits }}</td>
-                </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+    <link href="static/css/bootstrap.css" rel="stylesheet">
 
+    <body style="margin-top: 20px;">
+        <div class="container">
+            <div class="row">
+                <div class="span8 offset2">
 
+                    <h1>Iowa State University</h1>
+                    <h3>almamater.xkcd.com</h3>
+                    
+
+                <table class="table table-bordered">
+                    <thead>
+                    <th style="width:500px;">Original</th>
+                    <th>Diff Bits</th>
+                    </thead>
+                    <tbody>
+                    {% for submission in submissions %}
+                    <tr>
+                        <td>{{ submission.original }}</td>
+                        <td>{{ submission.diff_bits }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+            </div>
         </div>
-
     </body>
 </html>
