@@ -10,7 +10,7 @@ from flask_mongoengine import Document
 
 from mongoengine.fields import StringField, IntField
 
-chars = string.ascii_letters
+chars = string.digits + string.ascii_letters
 iter_thing = itertools.combinations_with_replacement(chars, r=32)
 
 # Determining the project root.
@@ -59,8 +59,9 @@ def get_hash():
 
 @app.route('/next_block')
 def get_block():
-    jump_to_next_block()
-    return ''.join(iter_thing.next()) + '\n'
+    import random
+    random.seed()
+    return ''.join([random.choice(chars) for c in range(0, 48)])
 
 
 def calculate_diff(original, hash):
