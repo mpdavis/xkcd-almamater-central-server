@@ -31,7 +31,7 @@ def jump_to_next_block():
 class Submission(Document):
     original = StringField(max_length=1024, required=True)
     diff_bits = IntField(required=True)
-    submitted_by = StringField(max_length=2048, required=False, default='No Name Submitted')
+    submitted_by = StringField(max_length=2048, required=False, default='')
 
 
 @app.route('/')
@@ -48,7 +48,7 @@ def get_hash():
     submitted_by = request.args.get('submitted_by', None)
 
     if not submitted_by:
-        submitted_by = "No Name Submitted"
+        submitted_by = ""
 
     if original and diff_bits:
         submission = Submission(original=original, diff_bits=diff_bits, submitted_by=submitted_by)
