@@ -47,7 +47,7 @@ def get_hash():
     diff_bits = request.args.get('diff', None)
     submitted_by = request.args.get('submitted_by', None)
 
-    if not submitted_by:
+    if not submitted_by or submitted_by == '(null)':
         submitted_by = ""
 
     if original and diff_bits:
