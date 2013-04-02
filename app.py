@@ -31,6 +31,7 @@ def jump_to_next_block():
 class Submission(Document):
     original = StringField(max_length=1024, required=True)
     diff_bits = IntField(required=True)
+    submitted_by = StringField(max_length=2048, required=False, default='No Name Submitted')
 
 
 @app.route('/')
@@ -44,8 +45,9 @@ def index():
 def get_hash():
     original = request.args.get('original', None)
     diff_bits = request.args.get('diff', None)
+    submitted_by = request.args.get('submitted_by', None)
     if original and diff_bits:
-        submission = Submission(original=original, diff_bits=diff_bits)
+        submission = Submission(original=original, diff_bits=diff_bits, submitted_by=submitted_by)
         submission.save()
         return "Submission saved successfully"
     return "Missing parameter"
@@ -64,7 +66,6 @@ def calculate_diff(original, hash):
     for x, y in zip(original_b, hash_b):
         total += x == y
     return total
-
 
 
 port = int(os.environ.get('PORT', 5000))

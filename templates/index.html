@@ -5,7 +5,7 @@
     <body style="margin-top: 20px;">
         <div class="container">
             <div class="row">
-                <div class="span8 offset2">
+                <div class="span10 offset1">
 
                     <h1>Iowa State University</h1>
                     <h3>almamater.xkcd.com</h3>
@@ -13,14 +13,16 @@
 
                 <table class="table table-bordered">
                     <thead>
-                    <th style="width:500px;">Original</th>
+                    <th style="width:450px;">Original</th>
                     <th>Diff Bits</th>
+                    <th>Submitted By</th>
                     </thead>
                     <tbody>
                     {% for submission in submissions %}
                     <tr>
                         <td>{{ submission.original }}</td>
                         <td>{{ submission.diff_bits }}</td>
+                        <td>{{ submission.submitted_by }}</td>
                     </tr>
                     {% endfor %}
                     </tbody>
