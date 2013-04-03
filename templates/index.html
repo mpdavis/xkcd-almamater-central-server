@@ -20,7 +20,7 @@
                     <tbody>
                     {% for submission in submissions %}
                     <tr>
-                        <td>********************************</td>
+                        <td>{{ submission.original }}</td>
                         <td>{{ submission.diff_bits }}</td>
                         <td>{{ submission.submitted_by }}</td>
                     </tr>
